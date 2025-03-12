@@ -1,0 +1,5 @@
+//3.print the numbers in reverse
+console.log("--Print numbers from 1 to 10 in reverse order--");
+for(let k=10;k>=1;k--){
+	console.log(k)
+}
