@@ -1,12 +1,14 @@
-const express = require('express');
-const app = express();
+const express=require('express');
+const app=express();
 const port=3001;
 
-const studentRoute=require('./student/studentroute')
+const userRoute=require('./users/userroute')
+const commentRoute = require('./comments/commentroute')
 
 app.use(express.json())
-app.use('/student',studentRoute)
+app.use('/users',userRoute)
+app.use('/comments',commentRoute);
 
 app.listen(port,()=>{
-    console.log(`Server is rining on ${port}`);
+    console.log(`Service running on ${port}`);
 })
