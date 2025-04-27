@@ -1,0 +1,391 @@
+01).Switch a database 
+use unidb
+switched to db unidb
+
+02).Insert the one of database
+
+db.students.insertOne(
+{
+  "regno": "2021IT003",
+  "name": "Bandara",
+  "age": 24,
+  "degree": "CSC",
+  "gpa": 3.2,
+  "gender": "male",
+  "skills": [
+    "Java",
+    "MatLab",
+    "SQL"
+  ]
+  
+}
+)
+{
+  acknowledged: true,
+  insertedId: ObjectId('680dd505a67ae878468988d7')
+}
+
+03).Insert the many database
+
+db.students.insertMany(
+[
+{
+  "regno": "2021IT004",
+  "name": "Kamal",
+  "age": 25,
+  "degree": "CSC",
+  "gpa": 3.7,
+  "gender": "male",
+  "skills": [
+    "Java",
+    "MatLab",
+    "MySQL"
+  ]
+  
+},
+{
+  "regno": "2021IT005",
+  "name": "Mathavi",
+  "age": 23,
+  "degree": "IT",
+  "gpa": 3.5,
+  "gender": "Female",
+  "skills": [
+    "Java",
+    "Python",
+    "SQL"
+  ]
+  
+},
+{
+  "regno": "2021IT006",
+  "name": "Sadana",
+  "age": 24,
+  "degree": "CSC",
+  "gpa": 3.3,
+  "gender": "Female",
+  "skills": [
+    "JS",
+    "Python",
+    "MySQL"
+  ]
+  
+}
+]
+)
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('680dd5a9a67ae878468988d8'),
+    '1': ObjectId('680dd5a9a67ae878468988d9'),
+    '2': ObjectId('680dd5a9a67ae878468988da')
+  }
+}
+
+04).Display the details of male
+
+db.students.find({"gender":"male"})
+{
+  _id: ObjectId('680dd505a67ae878468988d7'),
+  regno: '2021IT003',
+  name: 'Bandara',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.2,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'SQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988d8'),
+  regno: '2021IT004',
+  name: 'Kamal',
+  age: 25,
+  degree: 'CSC',
+  gpa: 3.7,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'MySQL'
+  ]
+}
+
+05).Display the one male student details.
+
+db.students.findOne({"gender":"male"})
+{
+  _id: ObjectId('680dd505a67ae878468988d7'),
+  regno: '2021IT003',
+  name: 'Bandara',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.2,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'SQL'
+  ]
+}
+
+06).Display the age greater than 24 students details.
+
+db.students.find({"age":{$gt:24}})
+
+{
+  _id: ObjectId('680dd5a9a67ae878468988d8'),
+  regno: '2021IT004',
+  name: 'Kamal',
+  age: 25,
+  degree: 'CSC',
+  gpa: 3.7,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'MySQL'
+  ]
+}
+
+07).Display the age equal to 24 students details.
+
+db.students.find({"age":{$eq:24}})
+{
+  _id: ObjectId('680dce6d99b390862e1ce4e3'),
+  regno: '2021IT001',
+  name: 'kolins',
+  age: 24,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Node'
+  ],
+  gender: 'Male'
+}
+{
+  _id: ObjectId('680dd505a67ae878468988d7'),
+  regno: '2021IT003',
+  name: 'Bandara',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.2,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'SQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988da'),
+  regno: '2021IT006',
+  name: 'Sadana',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.3,
+  gender: 'Female',
+  skills: [
+    'JS',
+    'Python',
+    'MySQL'
+  ]
+}
+
+08). Display the details of students who like to mongoDB
+
+db.students.find({"skills":{$in:["MongoDB"]}})
+{
+  _id: ObjectId('680dce6d99b390862e1ce4e3'),
+  regno: '2021IT001',
+  name: 'kolins',
+  age: 24,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Node'
+  ],
+  gender: 'Male'
+}
+{
+  _id: ObjectId('680dd24e99b390862e1ce4e6'),
+  regno: '2021IT002',
+  name: 'kamal',
+  age: 23,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Java'
+  ],
+  gender: 'Male'
+}
+
+09).Display the details of students who like to mongoDB and Java.
+
+db.students.find({"skills":{$in:["Mongodb","Java"]}})
+{
+  _id: ObjectId('680dd24e99b390862e1ce4e6'),
+  regno: '2021IT002',
+  name: 'kamal',
+  age: 23,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Java'
+  ],
+  gender: 'Male'
+}
+{
+  _id: ObjectId('680dd505a67ae878468988d7'),
+  regno: '2021IT003',
+  name: 'Bandara',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.2,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'SQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988d8'),
+  regno: '2021IT004',
+  name: 'Kamal',
+  age: 25,
+  degree: 'CSC',
+  gpa: 3.7,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'MySQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988d9'),
+  regno: '2021IT005',
+  name: 'Mathavi',
+  age: 23,
+  degree: 'IT',
+  gpa: 3.5,
+  gender: 'Female',
+  skills: [
+    'Java',
+    'Python',
+    'SQL'
+  ]
+}
+
+10).Display the detail ascending order of gpa.
+
+db.students.find().sort({'gpa':1})
+{
+  _id: ObjectId('680dce6d99b390862e1ce4e3'),
+  regno: '2021IT001',
+  name: 'kolins',
+  age: 24,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Node'
+  ],
+  gender: 'Male'
+}
+{
+  _id: ObjectId('680dd24e99b390862e1ce4e6'),
+  regno: '2021IT002',
+  name: 'kamal',
+  age: 23,
+  degree: 'IT',
+  skills: [
+    'JS',
+    'MongoDB',
+    'Java'
+  ],
+  gender: 'Male'
+}
+{
+  _id: ObjectId('680dd505a67ae878468988d7'),
+  regno: '2021IT003',
+  name: 'Bandara',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.2,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'SQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988da'),
+  regno: '2021IT006',
+  name: 'Sadana',
+  age: 24,
+  degree: 'CSC',
+  gpa: 3.3,
+  gender: 'Female',
+  skills: [
+    'JS',
+    'Python',
+    'MySQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988d9'),
+  regno: '2021IT005',
+  name: 'Mathavi',
+  age: 23,
+  degree: 'IT',
+  gpa: 3.5,
+  gender: 'Female',
+  skills: [
+    'Java',
+    'Python',
+    'SQL'
+  ]
+}
+{
+  _id: ObjectId('680dd5a9a67ae878468988d8'),
+  regno: '2021IT004',
+  name: 'Kamal',
+  age: 25,
+  degree: 'CSC',
+  gpa: 3.7,
+  gender: 'male',
+  skills: [
+    'Java',
+    'MatLab',
+    'MySQL'
+  ]
+}
+
+11).
+
+db.students.find({'degree':'IT','gender':'Female'}).sort({'gpa':1})
+{
+  _id: ObjectId('680dd5a9a67ae878468988d9'),
+  regno: '2021IT005',
+  name: 'Mathavi',
+  age: 23,
+  degree: 'IT',
+  gpa: 3.5,
+  gender: 'Female',
+  skills: [
+    'Java',
+    'Python',
+    'SQL'
+  ]
+}
+
